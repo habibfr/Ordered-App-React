@@ -22,7 +22,6 @@ const MealItemForm = (props) => {
     }
 
     props.onAddToCart(enteredAmountNumber);
-
   };
 
   const input = {
@@ -35,8 +34,8 @@ const MealItemForm = (props) => {
   };
   return (
     <form className={style.form} onSubmit={submitHandler}>
-      <Input ref={amountInputRef} label="Amount" input={input} />
-      <button className={style.button}>+ Add</button>
+      <Input ref={amountInputRef} input={input} />
+      <button className={style.button}>Add</button>
       {!amountIsValid && <p>Please enter a valid amount (1-5). </p>}
     </form>
   );
