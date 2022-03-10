@@ -9,12 +9,12 @@ const Header = (props) => {
   return (
     <Fragment>
       <header className={style.header}>
-        <h1>Meals</h1>
+        <h1>Hbb</h1>
         <ButtonHeader onClick={props.showCart} />
       </header>
 
       <div className={style["main-image"]}>
-        <img src={images.meals} alt="meals images" />
+        {/* <img src={images.tech} alt="bg images" /> */}
       </div>
     </Fragment>
   );

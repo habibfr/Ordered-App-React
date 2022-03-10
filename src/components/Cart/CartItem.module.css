@@ -47,7 +47,7 @@
   font: inherit;
   font-weight: bold;
   font-size: 1.25rem;
-  color: #8a2b06;
+  color: #540057;
   border: 1px solid #8a2b06;
   width: 3rem;
   text-align: center;
@@ -60,6 +60,6 @@
 
 .cart-item button:hover,
 .cart-item button:active {
-  background-color: #8a2b06;
+  background-color: #540057;
   color: white;
 }

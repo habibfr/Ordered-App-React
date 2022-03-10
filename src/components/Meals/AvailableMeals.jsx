@@ -7,27 +7,27 @@ import Card from "../UI/Card";
 const DUMMY_MEALS = [
   {
     id: "m1",
-    name: "Sushi",
-    description: "Finest fish and veggies",
-    price: 22.99,
+    name: "ROG Gaming",
+    description: "the best device for gaming",
+    price: 999.45,
   },
   {
     id: "m2",
-    name: "Schnitzel",
-    description: "A german specialty!",
-    price: 16.5,
+    name: "PlayStation 5",
+    description: "no game no life",
+    price: 467.42,
   },
   {
     id: "m3",
-    name: "Barbecue Burger",
-    description: "American, raw, meaty",
-    price: 12.99,
+    name: "Iphone 13 Pro",
+    description: "the biggest pro cameras",
+    price: 242.44,
   },
   {
-    id: "m4",
-    name: "Green Bowl",
-    description: "Healthy...and green...",
-    price: 18.99,
+    id: "m5",
+    name: "Tesla X",
+    description: "experience lightning-fast",
+    price: 18846.99,
   },
 ];
 
