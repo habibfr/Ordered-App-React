@@ -21,6 +21,16 @@
   z-index: 0;
   overflow: hidden;
 }
+
+.link {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+.link:hover{
+  color: blueviolet;
+}
 /* 
 .main-image img {
   width: 110%;

@@ -8,7 +8,9 @@ const Header = (props) => {
   return (
     <Fragment>
       <header className={style.header}>
-        <h1>Hbb</h1>
+        <a href="https://habibfr.vercel.app/" className={style.link}>
+          <h1>Hbb</h1>
+        </a>
         <ButtonHeader onClick={props.showCart} />
       </header>
 
