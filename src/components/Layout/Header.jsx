@@ -1,6 +1,5 @@
 import React from "react";
 import { Fragment } from "react";
-import { images } from "../Static";
 import style from "./Header.module.css";
 
 import ButtonHeader from "./ButtonHeader";

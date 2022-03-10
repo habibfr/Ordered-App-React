@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import style from "./MealItem.module.css";
 import MealItemForm from "./MealItemForm";
 import CartContext from "../../../store/Cart-context";
-import { images } from "../../Static";
 
 const MealItem = (props) => {
   const cartCtx = useContext(CartContext);
