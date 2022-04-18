@@ -1,38 +1,64 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./AvailableMeals.module.css";
 import MealItem from "./MealItem/MealItem";
 
 import Card from "../UI/Card";
 
-const DUMMY_MEALS = [
-  {
-    id: "m1",
-    name: "ROG Gaming",
-    description: "the best device for gaming",
-    price: 999.45,
-  },
-  {
-    id: "m2",
-    name: "PlayStation 5",
-    description: "no game no life",
-    price: 467.42,
-  },
-  {
-    id: "m3",
-    name: "Iphone 13 Pro",
-    description: "the biggest pro cameras",
-    price: 242.44,
-  },
-  {
-    id: "m5",
-    name: "Tesla X",
-    description: "experience lightning-fast",
-    price: 18846.99,
-  },
-];
-
 const AvailableMeals = () => {
-  const mealsList = DUMMY_MEALS.map((meal) => (
+  const [meals, setMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchMeals = async () => {
+      setIsLoading(true);
+      setError(null);
+      const response = await fetch(
+        "https://meals-react-9c13c-default-rtdb.firebaseio.com/meals.json"
+      );
+
+      if (!response.ok) {
+        throw new Error("Something Went Wrong!!");
+      }
+
+      const data = await response.json();
+      const mealsData = [];
+
+      for (const key in data) {
+        mealsData.push({
+          id: key,
+          name: data[key].name,
+          price: data[key].price,
+          description: data[key].description,
+        });
+      }
+      setMeals(mealsData);
+      setIsLoading(false);
+    };
+
+    fetchMeals().catch((error) => {
+      setIsLoading(false);
+      setError(error.message);
+    });
+  }, []);
+
+  if (isLoading) {
+    return (
+      <section className={style.MealsLoading}>
+        <p>Loading...</p>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className={style.MealsError}>
+        <p>{error}</p>
+      </section>
+    );
+  }
+
+  const mealsList = meals.map((meal) => (
     <MealItem
       id={meal.id}
       key={meal.id}
