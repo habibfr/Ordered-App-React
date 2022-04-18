@@ -8,6 +8,8 @@ import Checkout from "./Checkout";
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
   const [isCheckout, setIsCheckout] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [didSubmit, setDidSubmit] = useState(false);
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
@@ -21,6 +23,24 @@ const Cart = (props) => {
 
   const orderHandler = () => {
     setIsCheckout(true);
+  };
+
+  const confirmSubmitHandler = async (userData) => {
+    setIsSubmit(true);
+    await fetch(
+      "https://meals-react-9c13c-default-rtdb.firebaseio.com/orders.json",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          user: userData,
+          orderedItems: cartCtx.items,
+        }),
+      }
+    );
+
+    setIsSubmit(false);
+    setDidSubmit(true);
+    cartCtx.clearData();
   };
 
   const cartItems = (
@@ -51,15 +71,41 @@ const Cart = (props) => {
     </div>
   );
 
-  return (
-    <Modal>
+  const modalContent = (
+    <React.Fragment>
       {cartItems}
       <div className={style.total}>
         <span>Total Amounts</span>
         <span>{totalAmount}</span>
       </div>
-      {isCheckout && <Checkout onCancel={props.hideShowCart} />}
+      {isCheckout && (
+        <Checkout
+          onConfirm={confirmSubmitHandler}
+          onCancel={props.hideShowCart}
+        />
+      )}
       {!isCheckout && ModalAction}
+    </React.Fragment>
+  );
+
+  const isSubmiting = <p>Sending order data...</p>;
+
+  const submitContent = (
+    <React.Fragment>
+      <p>Succesfully order!</p>
+      <div className={style.actions}>
+        <button onClick={props.hideShowCart} className={style.button}>
+          Close
+        </button>
+      </div>
+    </React.Fragment>
+  );
+
+  return (
+    <Modal>
+      {!isSubmit && !didSubmit && modalContent}
+      {isSubmit && isSubmiting}
+      {!isSubmit && didSubmit && submitContent}
     </Modal>
   );
 };
