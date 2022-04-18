@@ -1,6 +1,7 @@
 .form {
   margin: 1rem 0;
   height: 19rem;
+  overflow: scroll;
 }
 
 .control {
@@ -25,32 +26,36 @@
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 .actions button {
   font: inherit;
-  color: #5a1a01;
   cursor: pointer;
   background-color: transparent;
-  border: none;
+  border: 1px solid #540057;
+  padding: 0.5rem 2rem;
   border-radius: 25px;
-  padding: 0.5rem 2rem; 
+  margin-left: 1rem;
 }
 
 .actions button:hover,
 .actions button:active {
-  background-color: #ffe6dc;
+  background-color: #a50caa;
+  border-color: #540057;
+  color: white;
 }
 
+
 .actions .submit {
-  border: 1px solid #5a1a01;
-  background-color: #5a1a01;
+  border: 1px solid #540057;
+  background-color: #540057;
   color: white;
 }
 
 .actions .submit:hover,
 .actions .submit:active {
-  background-color: #7a2706;
+  background-color: #8e1292;
 }
 
 .invalid label {
